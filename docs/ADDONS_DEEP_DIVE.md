@@ -759,18 +759,27 @@ Grafana K8s Monitoring provides comprehensive observability:
 
 #### Configuration Details
 ```yaml
+alloyOperator:
+  chart:
+    name: alloy-operator
+    repository: https://grafana.github.io/helm-charts
+    release: alloy-operator
+    version: 0.3.8
+    namespace: alloy-system
+    values: helm/alloy-operator.mustache
 grafana:
   chart:
     name: k8s-monitoring
     repository: https://grafana.github.io/helm-charts
     release: k8s-monitoring
-    version: 2.0.18
+    version: 3.3.2
     namespace: monitoring
     values: helm/grafana.mustache
 ```
 
 #### Monitoring Stack Components
-- **Grafana Agent**: Metrics and logs collection
+- **Alloy Operator**: Manages Grafana Alloy instances and CRDs
+- **Grafana Alloy Agents**: Metrics, logs, and traces collection
 - **Prometheus**: Metrics storage and querying
 - **Loki**: Log aggregation and querying
 - **Tempo**: Distributed tracing
